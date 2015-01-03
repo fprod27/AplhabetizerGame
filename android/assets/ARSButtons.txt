@@ -1,0 +1,25 @@
+ARSButtons.png
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Ascending
+  rotate: false
+  xy: 2, 2
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+Shuffle
+  rotate: false
+  xy: 260, 2
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+descending
+  rotate: false
+  xy: 518, 2
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1

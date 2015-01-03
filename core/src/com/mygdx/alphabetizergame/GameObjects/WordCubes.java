@@ -12,7 +12,7 @@ import org.w3c.dom.css.Rect;
 public class WordCubes {
 
     private Vector2 position;
-    private Vector2 velocity;
+    public Vector2 velocity;
 
     private int width;
     private int height;
@@ -20,8 +20,12 @@ public class WordCubes {
     private String word;
 
     public boolean isOnMiddleY;
+    public boolean isTouchedDown;
+    private boolean shouldDisappear;
 
     private Rectangle boundingRectangle;
+    private float clickLocationY;
+    private float clickLocationX;
 
     public WordCubes(float x, float y, int width, int height, String word){
 
@@ -32,6 +36,8 @@ public class WordCubes {
         velocity = new Vector2(0, 30);
         boundingRectangle = new Rectangle();
         isOnMiddleY = false;
+        isTouchedDown = false;
+        shouldDisappear = false;
     }
 
     public void update(float delta){
@@ -52,15 +58,15 @@ public class WordCubes {
     public void disappearCube(){
         position.y = 0 - height;
         velocity.y = 0;
+        shouldDisappear = true;
+    }
+    public void updateWord(String word){
+
+        this.word = word;
     }
 
     public float getX() {
         return position.x;
-    }
-
-    public void updateWord(String word){
-
-        this.word = word;
     }
 
     public float getY() {
@@ -79,17 +85,45 @@ public class WordCubes {
         return word;
     }
 
-    public float getVelocity(){
-        return velocity.y;
-    }
-
     public Rectangle getBoundingRectangle(){
         return boundingRectangle;
     }
 
-    public void onRestart(int resetY) {
+    public void restartAnimation() {
 
-        position.y = resetY;
-        velocity.y = 30;
+        shouldDisappear = false;
+    }
+
+    public void addVelocity(){
+
+
+    }
+
+    public void setTouchedDown(){
+        isTouchedDown = true;
+    }
+
+    public boolean shouldDisappear(){
+        return shouldDisappear;
+    }
+
+    public float getClickLocationX() {
+
+        return clickLocationX;
+    }
+
+    public float getClickLocationY() {
+        return clickLocationY;
+    }
+
+    public void setClickLocationX(float locX){
+        clickLocationX = locX;
+    }
+    public void setClickLocationY(float locY){
+        clickLocationY = locY;
+    }
+
+    public float getVelocity() {
+        return velocity.y;
     }
 }

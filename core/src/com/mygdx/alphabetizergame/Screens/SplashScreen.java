@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.alphabetizergame.AplhabetizerGame;
 import com.mygdx.alphabetizergame.Helpers.AssetLoader;
 import com.mygdx.alphabetizergame.TweenAccessors.SpriteAccessor;
-
 import aurelienribon.tweenengine.BaseTween;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenCallback;
@@ -18,14 +17,13 @@ import aurelienribon.tweenengine.TweenManager;
 /**
  * Created by angelo_2 on 12/7/2014.
  */
-public class SplashScreen implements Screen {
+public class SplashScreen extends AlphabetizerGameScreen {
     private TweenManager manager;
     private SpriteBatch batcher;
     private Sprite sprite;
-    private AplhabetizerGame game;
 
     public SplashScreen(AplhabetizerGame game){
-        this.game = game;
+        super(game);
     }
 
     @Override
@@ -46,14 +44,16 @@ public class SplashScreen implements Screen {
 
     @Override
     public void show() {
+        AssetLoader.loadSplash();
         AssetLoader.load();
+        AssetLoader.loadskin();
         sprite = new Sprite(AssetLoader.splashLogo);
         sprite.setColor(1, 1, 1, 0);
 
         float width = Gdx.graphics.getWidth();
         float height = Gdx.graphics.getHeight();
-        float desiredWidth = width * .7f;
-        float scale = desiredWidth / sprite.getWidth();
+        float desiredWidth = height * .7f;
+        float scale = desiredWidth / sprite.getHeight();
 
         sprite.setSize(sprite.getWidth() * scale, sprite.getHeight() * scale);
         sprite.setPosition((width / 2) - (sprite.getWidth() / 2), (height / 2)
@@ -81,7 +81,7 @@ public class SplashScreen implements Screen {
 
     @Override
     public void hide() {
-
+        dispose();
     }
 
     @Override
@@ -96,6 +96,6 @@ public class SplashScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        AssetLoader.disposeSplash();
     }
 }

@@ -9,8 +9,8 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		new LwjglApplication(new AplhabetizerGame(), config);
 
-        config.width = 500;
-        config.height = 500;
+        config.width = 480;
+        config.height = 600;
         config.title = "Alphabetizer Game";
 	}
 }
